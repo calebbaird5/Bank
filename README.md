@@ -1,6 +1,18 @@
 # Bank
 
-A modern React starter application built with **Vite**, **React**, **Tailwind CSS**, and **shadcn/ui**.
+A digital scorekeeper and companion app for the dice game **Bank**.
+
+Keep track of rounds, scores, and the shared bank while you play. Designed to make game nights easier by eliminating paper score sheets and handling the game flow automatically.
+
+## Features
+
+- 🎲 Track the shared bank each round
+- 👥 Support for multiple players
+- 🏦 One-tap banking for players
+- 📊 Automatic score tracking
+- 🔄 Round management
+- 📜 View current standings throughout the game
+- 📱 Responsive interface for phones, tablets, and desktops
 
 ## Tech Stack
 
@@ -8,7 +20,7 @@ A modern React starter application built with **Vite**, **React**, **Tailwind CS
 - ⚡ Vite
 - 🎨 Tailwind CSS
 - 🧩 shadcn/ui
-- 📦 npm
+- 🟦 TypeScript
 
 ## Getting Started
 
@@ -19,17 +31,13 @@ A modern React starter application built with **Vite**, **React**, **Tailwind CS
 
 ### Installation
 
-Clone the repository and install dependencies:
-
 ```bash
 git clone <repository-url>
-cd Bank
+cd bank
 npm install
 ```
 
-### Development
-
-Start the development server:
+### Run the Development Server
 
 ```bash
 npm run dev
@@ -41,66 +49,60 @@ Open your browser to:
 http://localhost:5173
 ```
 
-### Build
-
-Create a production build:
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-### Preview
-
-Preview the production build locally:
+### Preview Production Build
 
 ```bash
 npm run preview
 ```
 
-## Project Structure
+## Game Rules
 
-```
-.
-├── public/
-├── src/
-│   ├── components/
-│   ├── lib/
-│   ├── assets/
-│   ├── App.tsx
-│   └── main.tsx
-├── package.json
-└── README.md
-```
+The objective of Bank is to finish the game with the highest total score.
 
-## UI Components
+Each round begins with a shared bank that players can choose to claim on their turn instead of rolling.
 
-This project uses **shadcn/ui** for reusable, accessible UI components.
+General gameplay:
 
-To add a new component:
+- Players take turns rolling two six-sided dice.
+- The shared bank grows throughout the round.
+- During the first three rolls of a round, rolling a **7** adds **70 points** to the bank.
+- After the third roll:
+  - Rolling **doubles** doubles the current bank.
+  - Rolling a **7** immediately ends the round.
+- On your turn, you may **Bank** instead of rolling, claiming the current bank and sitting out for the remainder of the round.
+- After a fixed number of rounds, the player with the highest total score wins.
 
-```bash
-npx shadcn@latest add button
-```
+## Roadmap
 
-Replace `button` with any component available from the shadcn/ui documentation.
-
-## Styling
-
-Styling is powered by **Tailwind CSS**. Global styles can be found in:
-
-```
-src/index.css
-```
+- [ ] Player management
+- [ ] Automatic scorekeeping
+- [ ] Dice roller
+- [ ] Round history
+- [ ] Undo last action
+- [ ] Persistent game saves
+- [ ] Player statistics
+- [ ] Multiplayer support
+- [ ] Custom rule variations
 
 ## Scripts
 
-| Command           | Description                  |
-|-------------------|------------------------------|
-| `npm run dev`     | Start the development server |
-| `npm run build`   | Create a production build    |
+| Command | Description |
+| ------- | ----------- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Build for production |
 | `npm run preview` | Preview the production build |
-| `npm run lint`    | Run ESLint                   |
+| `npm run lint` | Run ESLint |
+
+## Contributing
+
+Contributions, bug reports, and feature requests are welcome. Feel free to open an issue or submit a pull request.
 
 ## License
 
-This project is available under the MIT License.
+This project is licensed under the MIT License.
