@@ -18,6 +18,9 @@ export default defineConfig({
       manifest: manifest,
     }),
   ],
+  server: {
+    watch: { ignored: ["**/.flycheck_*"] },
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
