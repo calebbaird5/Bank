@@ -1,11 +1,25 @@
+import { useState } from "react";
 import "./App.css";
-import { Button } from "./components/ui/button";
+import Game from "./components/Game";
+import { GameContext, type Player } from "./context";
 
 function App() {
+  const [isStarted, setIsStarted] = useState(false);
+  const playersState = useState<Player[]>([]);
+  const focusedPlayerIndexState = useState<number | null>(null);
+
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Button>test button</Button>
-    </div>
+    <GameContext
+      value={{
+        isStarted,
+        startGame: () => setIsStarted(true),
+        endGame: () => setIsStarted(false),
+        playersState,
+        focusedPlayerIndexState,
+      }}
+    >
+      <Game />
+    </GameContext>
   );
 }
 
