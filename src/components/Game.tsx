@@ -1,33 +1,26 @@
-import { useContext } from "react";
-import { Button } from "./ui/button";
-import { GameContext, usePlayers } from "@/context";
+import { useState } from "react";
+import { useGameContext } from "@/context";
 import StartGameMenu from "./StartGameMenu";
+import PlayGame from "./PlayGame";
+import Header from "./Header";
+import Podium from "./Podium";
 
 export default function Game() {
-  const { isStarted, startGame } = useContext(GameContext);
-  const { players, addPlayer } = usePlayers();
+  const { isStarted, gameOver } = useGameContext();
+
+  const [startDialogIsOpen, setStartDialogIsOpen] = useState(false);
 
   return (
     <>
-      <section className="flex  justify-between">
-        {!isStarted && players.length > 1 ? (
-          <Button variant="ghost" color="primary" onClick={startGame}>
-            Start Game
-          </Button>
-        ) : (
-          <span className="w-25"></span>
-        )}
-        <span>Bank</span>
-        <Button
-          variant="ghost"
-          color="primary"
-          className="w-25"
-          onClick={() => addPlayer({ name: "", score: 0 })}
-        >
-          Add Player
-        </Button>
-      </section>
-      {!isStarted && <StartGameMenu />}
+      <Header
+        startDialogIsOpen={startDialogIsOpen}
+        setStartDialogIsOpen={setStartDialogIsOpen}
+      />
+      {!isStarted && (
+        <StartGameMenu setStartDialogIsOpen={setStartDialogIsOpen} />
+      )}
+      {isStarted && !gameOver && <PlayGame />}
+      {gameOver && <Podium />}
     </>
   );
 }

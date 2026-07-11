@@ -1,30 +1,46 @@
-import { GameContext, usePlayers, type Player } from "@/context";
+import { usePlayers, type Player } from "@/context";
 import { Input } from "./ui/input";
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef, type Dispatch, type SetStateAction } from "react";
 import { GripHorizontal, Trash } from "lucide-react";
 import { Button } from "./ui/button";
 import { useKeyIsPressed } from "@/hooks/useKeyIsPressed";
 import { useSortable } from "@dnd-kit/react/sortable";
 
-export default function StartGameMenu() {
+export default function StartGameMenu({
+  setStartDialogIsOpen,
+}: {
+  setStartDialogIsOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const { players } = usePlayers();
 
   return (
     <section>
       <ul className="mx-1">
         {players.map((player, index) => (
-          <PlayerItem key={player.id} player={player} index={index} />
+          <PlayerItem
+            key={player.id}
+            player={player}
+            index={index}
+            setStartDialogIsOpen={setStartDialogIsOpen}
+          />
         ))}
       </ul>
     </section>
   );
 }
 
-function PlayerItem({ player, index }: { player: Player; index: number }) {
+function PlayerItem({
+  player,
+  index,
+  setStartDialogIsOpen,
+}: {
+  player: Player;
+  index: number;
+  setStartDialogIsOpen: Dispatch<SetStateAction<boolean>>;
+}) {
   const { ref } = useSortable({ id: player.id, index });
   const { players, addPlayer, removePlayer, updatePlayer, focusedPlayerIndex } =
     usePlayers();
-  const { startGame } = useContext(GameContext);
   const commandIsPressed = useKeyIsPressed("Meta");
   const handleKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
@@ -34,7 +50,7 @@ function PlayerItem({ player, index }: { player: Player; index: number }) {
       case "Enter":
         if (commandIsPressed) {
           if (players.length > 1 && players.every(({ name }) => name.length)) {
-            startGame();
+            setStartDialogIsOpen(true);
           }
           break;
         }
