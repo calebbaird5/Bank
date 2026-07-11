@@ -15,7 +15,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",
-      manifest: manifest,
+      manifest,
     }),
   ],
   server: {

@@ -81,10 +81,12 @@
     --color-background: 44 87% 94%;
     --color-foreground: 192 100% 15%;
 
-    --color-card: 44 87% 94%;
+    --color-card: 45 35% 88%; /* #eee8d5 */
+
     --color-card-foreground: 192 100% 15%;
 
-    --color-popover: 44 87% 94%;
+    --color-popover: 45 35% 88%;
+
     --color-popover-foreground: 192 100% 15%;
 
     /* Border / Input / Ring */
@@ -142,10 +144,10 @@
     --color-background: 192 100% 11%;
     --color-foreground: 44 87% 94%;
 
-    --color-card: 192 100% 13%;
+    --color-card: 192 81% 14%;
     --color-card-foreground: 44 87% 94%;
 
-    --color-popover: 192 100% 13%;
+    --color-popover: 192 81% 16%;
     --color-popover-foreground: 44 87% 94%;
 
     /* Border / Input / Ring */
