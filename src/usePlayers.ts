@@ -10,10 +10,7 @@ export function usePlayers() {
     (player: Omit<Player, "id">, index = players.length) => {
       setPlayers((current) => {
         const next = [...current];
-        next.splice(index, 0, {
-          ...player,
-          id: crypto.randomUUID(), // or however you generate IDs
-        });
+        next.splice(index, 0, { ...player, id: crypto.randomUUID() });
         return next;
       });
     },
