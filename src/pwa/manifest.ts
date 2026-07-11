@@ -4,8 +4,6 @@ export const manifest: Partial<ManifestOptions> = {
   name: "Bank",
   short_name: "Bank",
   description: 'Scoring tool for the dice game "Bank"',
-  theme_color: "#ffffff",
-  background_color: "#ffffff",
   display: "standalone",
   start_url: "/Bank",
   icons: [
