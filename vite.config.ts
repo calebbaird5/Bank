@@ -4,7 +4,7 @@ import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
-import { manifest } from "./src/pwa/manifest";
+import { manifest } from "./config/manifest";
 
 // https://vite.dev/config/
 export default defineConfig({

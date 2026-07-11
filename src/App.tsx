@@ -23,9 +23,13 @@ function App() {
     );
     if (meta) {
       meta.setAttribute("content", backgroundColor);
+    } else {
+      const newMeta = document.createElement("meta");
+      newMeta.setAttribute("name", "apple-mobile-web-app-status-bar-style");
+      newMeta.setAttribute("content", backgroundColor);
+      document.head.appendChild(newMeta);
     }
   }, []);
-
   return (
     <GameContext
       value={{
