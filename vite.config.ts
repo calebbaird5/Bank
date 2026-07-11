@@ -18,6 +18,7 @@ export default defineConfig({
       manifest,
     }),
   ],
+  base: "/Bank/",
   server: {
     watch: { ignored: ["**/.flycheck_*"] },
   },
