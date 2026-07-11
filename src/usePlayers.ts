@@ -1,8 +1,10 @@
-import { useContext } from "react";
-import { GameContext, Player } from "./context";
+import { useCallback, useContext } from "react";
+import { GameContext, type Player } from "./context";
 
 export function usePlayers() {
-  const { players, setPlayers } = useContext(GameContext);
+  const {
+    playersState: [players, setPlayers],
+  } = useContext(GameContext);
 
   const addPlayer = useCallback(
     (player: Omit<Player, "id">, index = players.length) => {
