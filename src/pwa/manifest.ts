@@ -7,7 +7,7 @@ export const manifest: Partial<ManifestOptions> = {
   theme_color: "#ffffff",
   background_color: "#ffffff",
   display: "standalone",
-  start_url: "/",
+  start_url: "/Vite-React-Tailwind-Chadcn-Starter-App",
   icons: [
     {
       src: "app-192.png",
