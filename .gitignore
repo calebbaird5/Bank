@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 **/generated-theme.css
+/src/theme/generated-theme.ts

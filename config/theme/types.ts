@@ -60,3 +60,17 @@ export function isThemeObject(obj: unknown): obj is ThemeObject {
     )
   );
 }
+
+export function isToken(value: unknown): value is {
+  value: string;
+  css: string;
+  hsl?: string;
+  hex?: string;
+} {
+  return (
+    typeof value === "object" &&
+    value !== null &&
+    "css" in value &&
+    "value" in value
+  );
+}

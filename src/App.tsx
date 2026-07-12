@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./App.css";
 import Game from "./components/Game";
 import { GameContext, type Player } from "./context";
 

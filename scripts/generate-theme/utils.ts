@@ -12,9 +12,10 @@ export function generateScaledVariables(
   return variants
     .map(({ name, multiplier, base }) => {
       if (base) {
-        return `--${variable}-${name}: var(--${variable});`;
+        return `${variable}-${name}: var(${variable.trim()});`;
       }
-      return `  --${variable}-${name}: calc(var(--${variable}) * ${multiplier});`;
+
+      return `${variable}-${name}: calc(var(${variable.trim()}) * ${multiplier});`;
     })
     .join("\n");
 }
@@ -52,7 +53,7 @@ export function generateVariables(
       }
 
       let normalizedValue =
-        mode === "variables" ? `var(${normalizedKey})` : value;
+        mode === "variables" ? `var(${normalizedKey.trim()})` : value;
       if (format === "hsl") {
         normalizedValue = `hsl(${normalizedValue})`;
       }
