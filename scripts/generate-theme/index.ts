@@ -4,16 +4,17 @@ import { generateVariables } from "./utils";
 import { isThemeColors } from "../../config/theme/types";
 import path from "path";
 
-console.log("Generating theme CSS from theme object...");
-const { colors, ...rest } = theme;
+export function generateTheme() {
+  console.log("Generating theme CSS from theme object...");
+  const { colors, ...rest } = theme;
 
-if (!isThemeColors(colors)) {
-  throw new Error(
-    "Colors object must have both light and dark themes with the same structure.",
-  );
-}
+  if (!isThemeColors(colors)) {
+    throw new Error(
+      "Colors object must have both light and dark themes with the same structure.",
+    );
+  }
 
-const css = `/* AUTO-GENERATED FILE. DO NOT EDIT. */
+  const css = `/* AUTO-GENERATED FILE. DO NOT EDIT. */
 
 :root {
 ${generateVariables(colors.light, { prefix: "  --color" })}
@@ -30,8 +31,9 @@ ${generateVariables(rest, { mode: "variables" })}
 }
 `;
 
-const file = path.resolve("src/styles/generated-theme.css");
-mkdirSync(path.dirname(file), { recursive: true });
-writeFileSync(file, css);
+  const file = path.resolve("src/styles/generated-theme.css");
+  mkdirSync(path.dirname(file), { recursive: true });
+  writeFileSync(file, css);
 
-console.log("Generated theme CSS");
+  console.log("Generated theme CSS");
+}

@@ -5,6 +5,7 @@ import path from "path";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 import { manifest } from "./config/manifest";
+import { themePlugin } from "./scripts/generate-theme/vite-theme-plugin";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
+    themePlugin(),
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: "auto",

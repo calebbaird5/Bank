@@ -61,49 +61,57 @@ export const dark: ThemeObject = {
   border: "192 81% 18%",
   input: "192 81% 18%",
   ring: "205 80% 60%",
+
   primary: {
     DEFAULT: "205 80% 60%",
-    Foreground: "192 100% 11%",
-    Hover: "205 80% 55%",
-    Active: "205 80% 48%",
-    Muted: "205 40% 45%",
-    Subtle: "205 30% 20%",
+    foreground: "192 100% 11%",
+    hover: "205 80% 55%",
+    active: "205 80% 48%",
+    muted: "205 40% 45%",
+    subtle: "205 30% 20%",
   },
+
   secondary: {
     DEFAULT: "192 35% 30%",
     foreground: "44 87% 94%",
     hover: "192 35% 36%",
     active: "192 35% 42%",
-    subtle: "192 35% 18%",
+    subtle: "192 35% 16%",
   },
+
   muted: {
     DEFAULT: "192 81% 14%",
     foreground: "44 30% 70%",
     hover: "192 81% 18%",
     active: "192 81% 22%",
   },
+
   accent: {
     DEFAULT: "68 100% 40%",
     foreground: "192 100% 11%",
     hover: "68 100% 35%",
     active: "68 100% 30%",
-    subtle: "68 40% 18%",
+    subtle: "68 45% 16%",
   },
+
   destructive: {
     DEFAULT: "1 71% 55%",
     foreground: "192 100% 11%",
     hover: "1 71% 48%",
     active: "1 71% 42%",
-    subtle: "1 40% 18%",
+    subtle: "1 45% 18%",
   },
+
   surface: {
     DEFAULT: "192 100% 13%",
-    surfaceHover: "192 81% 16%",
+    hover: "192 81% 16%",
   },
+
   card: {
     DEFAULT: "192 81% 14%",
     foreground: "44 87% 94%",
   },
+
   popover: {
     DEFAULT: "192 81% 16%",
     foreground: "44 87% 94%",
