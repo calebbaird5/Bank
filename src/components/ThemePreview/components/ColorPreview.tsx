@@ -1,6 +1,6 @@
 import { useThemeMode } from "@/hooks/useThemeMode";
-import { tokens } from "@/theme/generated-theme";
 import { isToken } from "../../../../config/theme/types";
+import { tokens } from "@/theme/generated-theme";
 
 export function ColorPreview() {
   const { themeMode } = useThemeMode();

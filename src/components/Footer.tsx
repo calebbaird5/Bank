@@ -35,7 +35,7 @@ export default function Footer({
   useEffect(() => void bankRef.current?.close(), [currentRound]);
 
   return (
-    <section className="flex justify-between items-center p-1 pb-3">
+    <section className="flex justify-between items-center p-1 pb-4">
       <Button
         variant="ghost"
         color="primary"
