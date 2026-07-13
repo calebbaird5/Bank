@@ -1,14 +1,15 @@
 import type { ManifestOptions } from "vite-plugin-pwa";
-import { light } from "./theme/colors";
+import { dark } from "./theme/colors";
 import { hslToHex } from "./theme/utils";
 
-if (!light.background || typeof light.background !== "string") {
-  throw new Error("Missing or invalid light theme background color.");
-} else if (!light.foreground || typeof light.foreground !== "string") {
-  throw new Error("Missing or invalid light theme foreground color.");
+if (!dark.background || typeof dark.background !== "string") {
+  throw new Error("Missing or invalid dark theme background color.");
+} else if (!dark.foreground || typeof dark.foreground !== "string") {
+  throw new Error("Missing or invalid dark theme foreground color.");
 }
-const background = hslToHex(light.background);
-const foreground = hslToHex(light.foreground);
+const background = hslToHex(dark.background);
+const foreground = hslToHex(dark.foreground);
+console.log("background", background, "foreground", foreground);
 
 export const manifest: Partial<ManifestOptions> = {
   name: "Bank",
