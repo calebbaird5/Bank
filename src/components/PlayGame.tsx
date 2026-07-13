@@ -32,11 +32,10 @@ export default function PlayGame() {
             {Array.from({ length: 11 }).map((_, index) => (
               <Button
                 variant="outline"
-                color="secondary"
-                className={cn("w-15 h-15", {
-                  "border-destructive text-destructive":
-                    index === 5 && currentRoll >= 3,
-                })}
+                color={
+                  index === 5 && currentRoll >= 3 ? "destructive" : "secondary"
+                }
+                className={cn("w-15 h-15")}
                 key={index}
                 disabled={currentRoll >= 3 && [0, 10].includes(index)}
                 onClick={() => handleRoll(index + 2)}

@@ -47,33 +47,39 @@ export const buttonVariantsConfig = {
     {
       variant: "outline",
       color: "primary",
-      class: "text-primary hover:bg-primary-subtle",
+      class:
+        "text-primary border-primary hover:bg-primary-subtle active:bg-primary-active active:text-background",
     },
     {
       variant: "outline",
       color: "secondary",
-      class: "text-secondary hover:bg-secondary-subtle border-secondary",
+      class:
+        "text-secondary hover:bg-secondary-subtle border-secondary active:bg-secondary-active active:text-background",
     },
     {
       variant: "outline",
       color: "destructive",
-      class: "text-destructive hover:bg-destructive-subtle border-destructive",
+      class:
+        "text-destructive hover:bg-destructive-subtle border-destructive active:bg-destructive-active active:text-background",
     },
 
     {
       variant: "ghost",
       color: "primary",
-      class: "text-primary hover:bg-primary-subtle",
+      class:
+        "text-primary hover:bg-primary-subtle active:bg-primary-active active:text-background",
     },
     {
       variant: "ghost",
       color: "secondary",
-      class: "text-secondary hover:bg-secondary-subtle",
+      class:
+        "text-secondary hover:bg-secondary-subtle active:bg-secondary-active active:text-background",
     },
     {
       variant: "ghost",
       color: "destructive",
-      class: "text-destructive hover:bg-destructive-subtle",
+      class:
+        "text-destructive hover:bg-destructive-subtle active:bg-destructive-active active:text-background",
     },
   ],
 
