@@ -33,13 +33,12 @@
 }
 
 html {
-  background: hsl(var(--background));
+  background: hsl(var(--color-background));
 }
 
 body {
-  color: hsl(var(--foreground));
-
-  background: hsl(var(--background));
+  color: hsl(var(--color-foreground));
+  background: hsl(var(--color-background));
 }
 
 ::selection {
