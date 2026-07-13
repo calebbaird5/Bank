@@ -16,7 +16,7 @@ function App() {
     const root = document.documentElement;
 
     const style = getComputedStyle(root);
-    const backgroundColor = style.getPropertyValue("--background-color");
+    const backgroundColor = style.getPropertyValue("--color-background");
     const meta = document.querySelector(
       'meta[name="apple-mobile-web-app-status-bar-style"]',
     );
