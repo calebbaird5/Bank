@@ -1,10 +1,17 @@
 import { useGameContext, usePlayers } from "@/context";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Banknote } from "lucide-react";
-import type { DialogRootActions } from "@base-ui/react";
 import { useEffect, useRef } from "react";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTrigger,
+} from "./ui/drawer";
+import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl";
 
 export default function Footer({
   startDialogIsOpen,
@@ -45,9 +52,9 @@ export default function Footer({
         Add Player
       </Button>
 
-      <Dialog open={startDialogIsOpen} onOpenChange={setStartDialogIsOpen}>
+      <Drawer open={startDialogIsOpen} onOpenChange={setStartDialogIsOpen}>
         {!isStarted && (
-          <DialogTrigger
+          <DrawerTrigger
             render={
               <Button
                 variant="ghost"
@@ -59,23 +66,27 @@ export default function Footer({
             }
           />
         )}
-        <DialogContent>
-          <p>How many rounds?</p>
-          <RadioGroup
-            className="flex gap-2 w-full justify-around"
-            value={maxRounds}
-            onValueChange={(value) => setMaxRounds(Number(value))}
-            onKeyDown={(e) => e.key === "Enter" && handleStartGame()}
-          >
-            <RadioGroupItem value={10}>10</RadioGroupItem>
-            <RadioGroupItem value={15}>15</RadioGroupItem>
-            <RadioGroupItem value={20}>20</RadioGroupItem>
-          </RadioGroup>
-          <Button variant="ghost" color="primary" onClick={handleStartGame}>
-            Start
-          </Button>
-        </DialogContent>
-      </Dialog>
+        <DrawerContent>
+          <DrawerHeader className="mb-3">How many rounds?</DrawerHeader>
+          <DrawerDescription className="mb-3">
+            <SegmentedControl
+              className="w-full px-3"
+              value={String(maxRounds)}
+              onValueChange={(value) => setMaxRounds(Number(value))}
+              onKeyDown={(e) => e.key === "Enter" && handleStartGame()}
+            >
+              <SegmentedControlItem value="10">10</SegmentedControlItem>
+              <SegmentedControlItem value="15">15</SegmentedControlItem>
+              <SegmentedControlItem value="20">20</SegmentedControlItem>
+            </SegmentedControl>
+          </DrawerDescription>
+          <DrawerFooter>
+            <Button variant="ghost" color="primary" onClick={handleStartGame}>
+              Start
+            </Button>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
       {gameOver && (
         <Dialog>
           <DialogTrigger

@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className="flex justify-between align-center p-2">
       <span className="w-15"></span>
-      <h3>Bank</h3>
+      <h3 className="text-xl">Bank</h3>
       <Button variant="ghost" className="w-15" onClick={toggleThemeMode}>
         <MoonStar />
       </Button>
