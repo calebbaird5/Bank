@@ -100,7 +100,7 @@ export const buttonVariants = cva(
   buttonConfig,
 );
 
-export type ButtonProps = ButtonPrimitive.Props &
+export type ButtonProps = Omit<ButtonPrimitive.Props, "color"> &
   VariantProps<typeof buttonVariants>;
 
 export function Button({
