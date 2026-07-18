@@ -22,13 +22,10 @@ export default function PlayGame() {
   // down rather than just instantly changing
   useEffect(() => {
     const start = renderedPotRef.current;
-
     const end = pot;
-
     if (start === end) return;
 
     const duration = 500;
-
     const startTime = performance.now();
 
     const animate = (time: number) => {

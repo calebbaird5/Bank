@@ -54,6 +54,7 @@ export function useGameContext() {
     setCurrentRound(1);
     setCurrentTurn(0);
     setCurrentRoll(0);
+    setPot(0);
   };
 
   const endTurn = () => {
@@ -156,7 +157,7 @@ export function useGameContext() {
   return {
     isStarted,
     startGame: () => setIsStarted(true),
-    endGame: () => setIsStarted(false),
+    endGame,
     currentRound,
     endRound,
     currentTurn,
