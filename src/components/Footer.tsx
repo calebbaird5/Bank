@@ -4,14 +4,12 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
 import {
   Drawer,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTrigger,
 } from "./ui/drawer";
 import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl";
 import BankDrawer from "./BankDrawer";
-import { useEffect, useRef } from "react";
 
 export default function Footer({
   startDialogIsOpen,
