@@ -10,14 +10,20 @@ import {
 } from "./ui/drawer";
 import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl";
 import BankDrawer from "./BankDrawer";
+import type { ComponentProps } from "react";
+import { cn } from "@/lib/utils";
+
+export interface FooterProps extends ComponentProps<"section"> {
+  startDialogIsOpen: boolean;
+  setStartDialogIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
 export default function Footer({
   startDialogIsOpen,
   setStartDialogIsOpen,
-}: {
-  startDialogIsOpen: boolean;
-  setStartDialogIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
+  className,
+  ...props
+}: FooterProps) {
   const {
     isStarted,
     maxRounds,
@@ -34,11 +40,14 @@ export default function Footer({
     setStartDialogIsOpen(false);
   };
 
-  /* const bankRef = useRef<DialogRootActions>(null);
-   * useEffect(() => void bankRef.current?.close(), [currentRound]); */
-
   return (
-    <section className="flex justify-between items-center p-1 pb-4">
+    <section
+      className={cn(
+        "flex justify-between items-center p-1 pb-4 ios:mb-4",
+        className,
+      )}
+      {...props}
+    >
       <Button
         variant="ghost"
         color="primary"
@@ -63,7 +72,9 @@ export default function Footer({
           </DrawerTrigger>
         )}
         <DrawerContent>
-          <DrawerHeader className="mb-3">How many rounds?</DrawerHeader>
+          <DrawerHeader className="mb-3 ios:mb-6">
+            How many rounds?
+          </DrawerHeader>
           <div className="mb-3">
             <SegmentedControl
               className="w-full px-3"

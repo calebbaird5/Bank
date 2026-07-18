@@ -20,6 +20,7 @@
 
   html {
     @apply font-sans;
+    font-size: 20px;
   }
 
   h1,
@@ -43,4 +44,10 @@ body {
 
 ::selection {
   background: hsl(var(--color-selection) / 0.25);
+}
+
+@custom-variant ios {
+  @supports (-webkit-touch-callout: none) {
+    @slot;
+  }
 }

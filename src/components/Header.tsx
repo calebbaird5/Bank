@@ -1,21 +1,30 @@
-import { MoonStar } from "lucide-react";
+import { MoonStar, Settings } from "lucide-react";
 import { Button } from "./ui/button";
 import { useThemeMode } from "@/hooks/useThemeMode";
+import { useGameContext } from "@/context";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 export default function Header() {
   const { toggleThemeMode } = useThemeMode();
+  const { isStarted } = useGameContext();
   return (
-    <div className="flex justify-between align-center p-2">
-      <span className="w-15"></span>
+    <div className="flex justify-center align-center p-2">
       <h3 className="text-2xl text-primary">Bank</h3>
-      <Button
-        variant="ghost"
-        color="secondary"
-        className="w-15"
-        onClick={toggleThemeMode}
-      >
-        <MoonStar />
-      </Button>
+      <Popover>
+        <PopoverTrigger
+          render={<Button variant="ghost" size="icon" color="secondary" />}
+          className="absolute top-2 right-2"
+        >
+          <Settings />
+        </PopoverTrigger>
+        <PopoverContent>
+          {isStarted && <Button variant="ghost">Start Over</Button>}
+          <Button variant="ghost" onClick={toggleThemeMode}>
+            Theme Mode
+            <MoonStar className="ml-2" />
+          </Button>
+        </PopoverContent>
+      </Popover>
     </div>
   );
 }

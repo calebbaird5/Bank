@@ -55,7 +55,7 @@ export default function BankDrawer() {
           Bank <Banknote className="ml-1" />
         </DrawerTrigger>
       )}
-      <DrawerContent className="p-5 rounded-t-none rounded-l-none rounded-r-none">
+      <DrawerContent className="p-5 rounded-t-none rounded-l-none rounded-r-none ios:pb-8">
         <ul className="flex flex-col gap-2">
           {localPlayers.map((player, i) => (
             <li key={player.id}>
