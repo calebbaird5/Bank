@@ -16,7 +16,7 @@ export default function PlayGame() {
         <h3> Round {currentRound}</h3>
         <h3> Roll {currentRoll}</h3>
       </div>
-      <h1>{pot}</h1>
+      <h1 className="text-4xl">{pot}</h1>
       <p> {players[currentTurn]?.name}'s turn</p>
 
       {/* className={cn(} */}
@@ -26,7 +26,6 @@ export default function PlayGame() {
           "sm:flex-row sm:justify-around sm:max-w-[800px] sm:items-start",
         )}
       >
-        <ScoreBoard />
         <Card className="w-full max-w-[300px]">
           <CardContent className="grid grid-cols-4 gap-2">
             {Array.from({ length: 11 }).map((_, index) => (
@@ -54,6 +53,7 @@ export default function PlayGame() {
             </Button>
           </CardContent>
         </Card>
+        <ScoreBoard />
       </div>
     </section>
   );

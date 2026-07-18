@@ -1,8 +1,6 @@
 import { useGameContext, usePlayers } from "@/context";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog";
-import { Banknote } from "lucide-react";
-import { useEffect, useRef } from "react";
 import {
   Drawer,
   DrawerContent,
@@ -12,6 +10,8 @@ import {
   DrawerTrigger,
 } from "./ui/drawer";
 import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl";
+import BankDrawer from "./BankDrawer";
+import { useEffect, useRef } from "react";
 
 export default function Footer({
   startDialogIsOpen,
@@ -25,8 +25,6 @@ export default function Footer({
     maxRounds,
     setMaxRounds,
     startGame,
-    bankPlayer,
-    currentRound,
     gameOver,
     newGame,
     restartGame,
@@ -38,8 +36,8 @@ export default function Footer({
     setStartDialogIsOpen(false);
   };
 
-  const bankRef = useRef<DialogRootActions>(null);
-  useEffect(() => void bankRef.current?.close(), [currentRound]);
+  /* const bankRef = useRef<DialogRootActions>(null);
+   * useEffect(() => void bankRef.current?.close(), [currentRound]); */
 
   return (
     <section className="flex justify-between items-center p-1 pb-4">
@@ -60,15 +58,15 @@ export default function Footer({
                 variant="ghost"
                 color="primary"
                 disabled={players.length < 2 || players.some((p) => !p.name)}
-              >
-                Start Game
-              </Button>
+              />
             }
-          />
+          >
+            Start Game
+          </DrawerTrigger>
         )}
         <DrawerContent>
           <DrawerHeader className="mb-3">How many rounds?</DrawerHeader>
-          <DrawerDescription className="mb-3">
+          <div className="mb-3">
             <SegmentedControl
               className="w-full px-3"
               value={String(maxRounds)}
@@ -79,7 +77,7 @@ export default function Footer({
               <SegmentedControlItem value="15">15</SegmentedControlItem>
               <SegmentedControlItem value="20">20</SegmentedControlItem>
             </SegmentedControl>
-          </DrawerDescription>
+          </div>
           <DrawerFooter>
             <Button variant="ghost" color="primary" onClick={handleStartGame}>
               Start
@@ -102,36 +100,7 @@ export default function Footer({
           </DialogContent>
         </Dialog>
       )}
-      {!gameOver && (
-        <Dialog actionsRef={bankRef}>
-          {isStarted && (
-            <DialogTrigger
-              render={
-                <Button>
-                  Bank <Banknote className="ml-1" />
-                </Button>
-              }
-            />
-          )}
-          <DialogContent className="pt-10">
-            <ul className="flex flex-col gap-2">
-              {players.map((player) => (
-                <li key={player.id}>
-                  <Button
-                    variant="ghost"
-                    className="w-full flex items-center justify-between bg-background px-2 py-1 rounded-md"
-                    onClick={() => bankPlayer(player.id)}
-                    disabled={player.currentlyBanked}
-                  >
-                    <span> {player.name} </span>
-                    <span>{player.score}</span>
-                  </Button>
-                </li>
-              ))}
-            </ul>
-          </DialogContent>
-        </Dialog>
-      )}
+      {!gameOver && <BankDrawer />}
     </section>
   );
 }

@@ -13,8 +13,10 @@ export default function Podium() {
           <div className="w-full flex justify-center">
             <Trophy size={50} className="text-primary mt-16 mb-2" />
           </div>
-          <p className="text-xl text-primary">{sortedPlayers[0].name}</p>
-          <p className="text-xl text-primary">
+          <p className="text-xl text-primary text-center">
+            {sortedPlayers[0].name}
+          </p>
+          <p className="text-xl text-primary text-center">
             Score: {sortedPlayers[0].score}
           </p>
         </div>
@@ -23,7 +25,7 @@ export default function Podium() {
           <hr />
           <ul>
             {sortedPlayers.slice(1).map((player) => (
-              <li key={player.id} className="text-md">
+              <li key={player.id} className="text-md text-center">
                 {player.name} - {player.score}
               </li>
             ))}
