@@ -9,7 +9,6 @@ if (!dark.background || typeof dark.background !== "string") {
 }
 const background = hslToHex(dark.background);
 const foreground = hslToHex(dark.foreground);
-console.log("background", background, "foreground", foreground);
 
 export const manifest: Partial<ManifestOptions> = {
   name: "Bank",

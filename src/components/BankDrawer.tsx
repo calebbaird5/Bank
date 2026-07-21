@@ -11,9 +11,7 @@ function getLocalPlayer(player: Player) {
 export default function BankDrawer() {
   const { isStarted, bankPlayer, pot } = useGameContext();
   const { players } = usePlayers();
-
   const [localPlayers, setLocalPlayers] = useState(players.map(getLocalPlayer));
-  console.log("localPlayers", localPlayers);
 
   useEffect(
     () => setLocalPlayers(players.map(getLocalPlayer)),

@@ -4,7 +4,7 @@ import Footer from "./Footer";
 import Header from "./Header";
 import PlayGame from "./PlayGame";
 import Podium from "./Podium";
-import StartGameMenu from "./StartGameMenu";
+import PlayersMenu from "./PlayersMenu";
 import { Landmark } from "lucide-react";
 
 export default function Game() {
@@ -30,7 +30,7 @@ export default function Game() {
       {gameOver && <Podium />}
       <div></div>
       {!isStarted && (
-        <StartGameMenu setStartDialogIsOpen={setStartDialogIsOpen} />
+        <PlayersMenu setStartDialogIsOpen={setStartDialogIsOpen} />
       )}
       <Footer
         className="fixed bottom-0 left-0 right-0 bg-background pt-2"

@@ -2,20 +2,23 @@ import { useGameContext, usePlayers, type Player } from "@/context";
 import { Card, CardContent } from "./ui/card";
 import { cn } from "@/lib/utils";
 import { useDoubleTap } from "@/hooks/useDoubleTap";
+import { useMemo } from "react";
 
 export default function ScoreBoard() {
   const { players } = usePlayers();
+
+  const sortedPlayers = useMemo(() => {
+    return [...players].sort((a, b) => b.score - a.score);
+  }, [players]);
 
   return (
     <Card className="w-full max-w-[300px] sm:min-h-[228px]">
       <CardContent>
         <h2>Scoreboard</h2>
         <ul className="flex flex-col gap-2">
-          {players
-            .sort((a, b) => b.score - a.score)
-            .map((player) => (
-              <ScoreBoardItem key={player.id} player={player} />
-            ))}
+          {sortedPlayers.map((player) => (
+            <ScoreBoardItem key={player.id} player={player} />
+          ))}
         </ul>
       </CardContent>
     </Card>

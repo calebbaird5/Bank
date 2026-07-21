@@ -3,6 +3,8 @@ import { Button } from "./ui/button";
 import { useThemeMode } from "@/hooks/useThemeMode";
 import { useGameContext } from "@/context";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
+import PlayersMenu from "./PlayersMenu";
 
 export default function Header() {
   const { toggleThemeMode } = useThemeMode();
@@ -22,6 +24,17 @@ export default function Header() {
             <Button variant="ghost" onClick={endGame}>
               Start Over
             </Button>
+          )}
+
+          {isStarted && (
+            <Drawer>
+              <DrawerTrigger render={<Button variant="ghost" />}>
+                Edit Players
+              </DrawerTrigger>
+              <DrawerContent className="py-4">
+                <PlayersMenu />
+              </DrawerContent>
+            </Drawer>
           )}
           <Button variant="ghost" onClick={toggleThemeMode}>
             Theme Mode

@@ -10,10 +10,8 @@ import {
 } from "./ui/drawer";
 import { SegmentedControl, SegmentedControlItem } from "./SegmentedControl";
 import BankDrawer from "./BankDrawer";
-import { useMemo, useRef, useState, type ComponentProps } from "react";
+import { type ComponentProps } from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "./ui/input";
-import type { DrawerRootActions } from "@base-ui/react";
 
 export interface FooterProps extends ComponentProps<"section"> {
   startDialogIsOpen: boolean;
@@ -37,38 +35,21 @@ export default function Footer({
   } = useGameContext();
   const { players, addPlayer } = usePlayers();
 
-  const drawerActionsRef = useRef<DrawerRootActions>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const minPlayerScore = useMemo(() => {
-    return players.reduce(
-      (acc, cur) => Math.min(cur.score, acc),
-      Number.POSITIVE_INFINITY,
-    );
-  }, [players]);
-
   const handleStartGame = () => {
     startGame();
     setStartDialogIsOpen(false);
   };
 
-  const handleAddPlayer = (score: number) => {
-    addPlayer({ ...newPlayer, score });
-    setNewPlayer({ name: "", score: 0 });
-    drawerActionsRef.current?.close();
-  };
-
-  const [newPlayer, setNewPlayer] = useState({ name: "", score: 0 });
-
   return (
     <section
       className={cn(
         "flex justify-between items-center p-1 pb-4 ios:pb-8",
+        { "justify-end": isStarted },
         className,
       )}
       {...props}
     >
-      {!isStarted ? (
+      {!isStarted && (
         <Button
           variant="ghost"
           color="primary"
@@ -77,34 +58,6 @@ export default function Footer({
         >
           Add Player
         </Button>
-      ) : (
-        <Drawer actionsRef={drawerActionsRef}>
-          <DrawerTrigger
-            render={<Button variant="ghost" color="primary" className="w-25" />}
-          >
-            Add Player
-          </DrawerTrigger>
-          <DrawerContent className="!rounded-none ios:pb-3" initialFocus>
-            <Input
-              value={newPlayer.name}
-              variant="underline"
-              ref={inputRef}
-              onChange={(e) =>
-                setNewPlayer((prev) => ({ ...prev, name: e.target.value }))
-              }
-            />
-            <div className="flex justify-around pb-2 pt-1">
-              <Button onClick={() => handleAddPlayer(0)}>
-                {minPlayerScore === 0 ? "Add Player" : "Start at 0"}
-              </Button>
-              {minPlayerScore > 0 && (
-                <Button onClick={() => handleAddPlayer(minPlayerScore)}>
-                  Start at {minPlayerScore}
-                </Button>
-              )}
-            </div>
-          </DrawerContent>
-        </Drawer>
       )}
 
       <Drawer open={startDialogIsOpen} onOpenChange={setStartDialogIsOpen}>
